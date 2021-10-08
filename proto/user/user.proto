@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "./";
+
+service UserService{
+    rpc List(NoRequest) returns (UserResponse);
+    rpc Create(CreateRequest) returns (UserResponse);
+}
+
+message CreateRequest {
+  string name = 1;
+  string email = 2;
+}
+
+message NoRequest{}
+
+message UserResponse {
+    repeated User users = 1;
+}
+
+message User {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+}
